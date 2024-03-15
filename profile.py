@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 tourDescription = """
-### Teaching 5G with POWDER and OpenAirInterface5G
+### Running 5G simulation on POWDER and OpenAirInterface5G
 
 This profile is derived from a tutorial session created by Dustin Maas for MERIF 2023.
 It deploys a single compute node with an image that includes docker,
@@ -35,7 +35,7 @@ request = portal.context.makeRequestRSpec()
 
 node = request.RawPC( "node" )
 node.hardware_type = "d430"
-node.disk_image = "urn:publicid:IDN+emulab.net+image+mww2023:oai-cn5g-rfsim"
+node.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"  # disk image on POWDER.
 node.startVNC()
 
 tour = IG.Tour()
