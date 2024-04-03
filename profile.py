@@ -77,7 +77,7 @@ pc.defineStructParameter(
             "machine",
             "NUC machine for UE",
             portal.ParameterType.STRING,
-            NUC_HARDWARES[0], 
+            NUC_HARDWARES[1], 
             NUC_HARDWARES,
             longDescription="NUC machine for UE"
         ),
