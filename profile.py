@@ -31,10 +31,7 @@ import geni.rspec.igext as IG
 import geni.rspec.emulab.pnext as PN
 import geni.rspec.emulab as emulab
 
-NUC_HARDWARES = [
-    ("nuc27", "nuc27 of type nuc8259"),
-    ("nuc23", "nuc23 of type nuc8650"),
-]
+NUC_HARDWARES = ("nuc27", "nuc23")
 # NUC_HWTYPE = "nuc5300"
 BIN_PATH = "/local/repository/bin"
 DEPLOY_OAI_UE = os.path.join(BIN_PATH, "start-oai-ue.sh")
@@ -48,69 +45,37 @@ nuc_to_hw_type = {
     "nuc23": "nuc8650"
 }
 
-pc.defineStructParameter(
+pc.defineParameter(
     "enb1_node",
-    "Nodes",
-    [],
-    multiValue=False,
-    min=1,
-    members=[
-        portal.Parameter(
-            "machine",
-            "NUC machine for gNB",
-            portal.ParameterType.STRING,
-            NUC_HARDWARES[0], 
-            NUC_HARDWARES,
-            longDescription="NUC machine for gNB"
-        ),
-    ]
+    "Node for eNB",
+    portal.ParameterType.STRING,
+    NUC_HARDWARES[0],
+    NUC_HARDWARES
 )
 
-pc.defineStructParameter(
+pc.defineParameter(
     "ue_node",
-    "Nodes",
-    [],
-    multiValue=False,
-    min=1,
-    members=[
-        portal.Parameter(
-            "machine",
-            "NUC machine for UE",
-            portal.ParameterType.STRING,
-            NUC_HARDWARES[1], 
-            NUC_HARDWARES,
-            longDescription="NUC machine for UE"
-        ),
-    ]
+    "Node for UE",
+    portal.ParameterType.STRING,
+    NUC_HARDWARES[1],
+    NUC_HARDWARES
 )
-
-# pc.defineParameter("enb1_node", "PhantomNet NUC+B210 for first eNodeB",
-#                    portal.ParameterType.STRING, "nuc2", advanced=True,
-#                    longDescription="Specific eNodeB node to bind to.")
-
-# pc.defineParameter("interferer_node", "PhantomNet NUC+B210 for interferer",
-#                    portal.ParameterType.STRING, "nuc4", advanced=True,
-#                    longDescription="Specific interferer node to bind to.")
-
-# pc.defineParameter("ue_node", "PhantomNet NUC+B210 for UE",
-#                    portal.ParameterType.STRING, "nuc1", advanced=True,
-#                    longDescription="Specific UE node to bind to.")
 
 params = pc.bindParameters()
 pc.verifyParameters()
 request = pc.makeRequestRSpec()
 
 ue = request.RawPC("ue")
-ue.component_id = params.ue_node.machine
-ue.hardware_type = nuc_to_hw_type[params.ue_node.machine]
+ue.component_id = params.ue_node
+ue.hardware_type = nuc_to_hw_type[params.ue_node]
 ue.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"  # for now just deploy the same disk image.
 ue_enb1_rf = ue.addInterface("ue_enb1_rf")
 # ue_interferer_rf = ue.addInterface("ue_interferer_rf")
 ue.addService(rspec.Execute(shell="bash", command=DEPLOY_OAI_UE))
 
 enb1 = request.RawPC("enb1")
-enb1.component_id = params.enb1_node.machine
-enb1.hardware_type = nuc_to_hw_type[params.enb1.machine]
+enb1.component_id = params.enb1_node
+enb1.hardware_type = nuc_to_hw_type[params.enb1]
 enb1.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"
 # enb1_s1_if = enb1.addInterface("enb1_s1_if")
 # enb1_s1_if.addAddress(rspec.IPv4Address("192.168.1.2", "255.255.255.0"))
