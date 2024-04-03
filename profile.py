@@ -75,7 +75,7 @@ ue.addService(rspec.Execute(shell="bash", command=DEPLOY_OAI_UE))
 
 enb1 = request.RawPC("enb1")
 enb1.component_id = params.enb1_node
-enb1.hardware_type = nuc_to_hw_type[params.enb1]
+enb1.hardware_type = nuc_to_hw_type[params.enb1_node]
 enb1.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"
 # enb1_s1_if = enb1.addInterface("enb1_s1_if")
 # enb1_s1_if.addAddress(rspec.IPv4Address("192.168.1.2", "255.255.255.0"))
