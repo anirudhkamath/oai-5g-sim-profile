@@ -80,7 +80,7 @@ enb1.hardware_type = nuc_to_hw_type[params.enb1_node]
 enb1.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"
 enb1.Desire("rf-controlled", 1)
 enb1_ue_rf = enb1.addInterface("enb1_ue_rf")
-enb1.startVNF()
+enb1.startVNC()
 # enb1.addService(rspec.Execute(shell="bash"))
 
 # interferer = request.RawPC("interferer")
