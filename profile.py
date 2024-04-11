@@ -71,7 +71,8 @@ ue.hardware_type = nuc_to_hw_type[params.ue_node]
 ue.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"  # for now just deploy the same disk image.
 ue.Desire("rf-controlled", 1)
 ue_enb1_rf = ue.addInterface("ue_enb1_rf")
-ue.addService(rspec.Execute(shell="bash", command=DEPLOY_OAI_UE))
+ue.startVNC()
+# ue.addService(rspec.Execute(shell="bash"))
 
 enb1 = request.RawPC("enb1")
 enb1.component_id = params.enb1_node
@@ -79,7 +80,8 @@ enb1.hardware_type = nuc_to_hw_type[params.enb1_node]
 enb1.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"
 enb1.Desire("rf-controlled", 1)
 enb1_ue_rf = enb1.addInterface("enb1_ue_rf")
-enb1.addService(rspec.Execute(shell="bash", command=DEPLOY_OAI_GNB))
+enb1.startVNF()
+# enb1.addService(rspec.Execute(shell="bash"))
 
 # interferer = request.RawPC("interferer")
 # interferer.hardware_type = NUC_HWTYPE
