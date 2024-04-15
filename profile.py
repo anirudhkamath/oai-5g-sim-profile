@@ -31,7 +31,7 @@ import geni.rspec.igext as IG
 import geni.rspec.emulab.pnext as PN
 import geni.rspec.emulab as emulab
 
-NUC_HARDWARES = ("nuc27", "nuc23")
+NUC_HARDWARES = ("nuc1", "nuc2")
 # NUC_HWTYPE = "nuc5300"
 BIN_PATH = "/local/repository/bin"
 DEPLOY_OAI_UE = os.path.join(BIN_PATH, "start-oai-ue.sh")
