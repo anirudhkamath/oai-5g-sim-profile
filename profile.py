@@ -41,8 +41,8 @@ DEPLOY_INTERFERER = os.path.join(BIN_PATH, "start-awgn-interferer.sh")
 pc = portal.Context()
 
 nuc_to_hw_type = {
-    "nuc27": "nuc8259",
-    "nuc23": "nuc8650"
+    "nuc1": "nuc5300",
+    "nuc2": "nuc5300"
 }
 
 pc.defineParameter(
