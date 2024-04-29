@@ -68,7 +68,7 @@ request = pc.makeRequestRSpec()
 ue = request.RawPC("ue")
 ue.component_id = params.ue_node
 ue.hardware_type = nuc_to_hw_type[params.ue_node]
-ue.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"  # for now just deploy the same disk image.
+ue.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"  # for now just deploy the same disk image.
 ue.Desire("rf-controlled", 1)
 ue_enb1_rf = ue.addInterface("ue_enb1_rf")
 ue.startVNC()
@@ -77,11 +77,20 @@ ue.startVNC()
 enb1 = request.RawPC("enb1")
 enb1.component_id = params.enb1_node
 enb1.hardware_type = nuc_to_hw_type[params.enb1_node]
-enb1.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"
+enb1.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
 enb1.Desire("rf-controlled", 1)
 enb1_ue_rf = enb1.addInterface("enb1_ue_rf")
 enb1.startVNC()
 # enb1.addService(rspec.Execute(shell="bash"))
+
+
+# core node.
+# node = request.RawPC( "node" )
+# node.hardware_type = "d430"
+# node.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"  # disk image on POWDER.
+# node_gnb_intf = node.addInterface("core_enb1_interface")
+# node_gnb_intf.addAddress(rspec.IPv4Address("192.168.70.132", "255.255.255.0"))
+# node.startVNC()
 
 # interferer = request.RawPC("interferer")
 # interferer.hardware_type = NUC_HWTYPE
@@ -101,11 +110,6 @@ rflink1.addInterface(ue_enb1_rf)
 # rflink2 = request.RFLink("rflink2")
 # rflink2.addInterface(interferer_ue_rf)
 # rflink2.addInterface(ue_interferer_rf)
-
-# node = request.RawPC( "node" )
-# node.hardware_type = "d430"
-# node.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"  # disk image on POWDER.
-# node.startVNC()
 
 tour = IG.Tour()
 tour.Description(IG.Tour.MARKDOWN, tourDescription)
