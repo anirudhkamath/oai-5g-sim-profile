@@ -90,7 +90,7 @@ enb1.startVNC()
 core_node = request.RawPC( "node" )
 core_node.hardware_type = "d430"
 core_node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
-core_node_gnb_intf = node.addInterface("core_enb1_interface")
+core_node_gnb_intf = core_node.addInterface("core_enb1_interface")
 core_node_gnb_intf.addAddress(rspec.IPv4Address("192.168.1.10", "255.255.255.0"))  # NGAP (AMF, UP)
 core_node.startVNC()
 
