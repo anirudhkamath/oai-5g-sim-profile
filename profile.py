@@ -80,17 +80,19 @@ enb1.hardware_type = nuc_to_hw_type[params.enb1_node]
 enb1.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
 enb1.Desire("rf-controlled", 1)
 enb1_ue_rf = enb1.addInterface("enb1_ue_rf")
+enb1_core_node_intf = enb1.addInterface("enb1_core_interface")
+enb1_core_node_intf.addAddress(rspec.IPv4Address("192.168.1.20", "255.255.255.0"))  # gNB endpoint for core link.
 enb1.startVNC()
 # enb1.addService(rspec.Execute(shell="bash"))
 
 
 # core node.
-# node = request.RawPC( "node" )
-# node.hardware_type = "d430"
-# node.disk_image = "urn:publicid:IDN+emulab.net+image+TimeTravel5G:oai-5g-sim-with-bbr"  # disk image on POWDER.
-# node_gnb_intf = node.addInterface("core_enb1_interface")
-# node_gnb_intf.addAddress(rspec.IPv4Address("192.168.70.132", "255.255.255.0"))
-# node.startVNC()
+core_node = request.RawPC( "node" )
+core_node.hardware_type = "d430"
+core_node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
+core_node_gnb_intf = node.addInterface("core_enb1_interface")
+core_node_gnb_intf.addAddress(rspec.IPv4Address("192.168.1.10", "255.255.255.0"))  # NGAP (AMF, UP)
+core_node.startVNC()
 
 # interferer = request.RawPC("interferer")
 # interferer.hardware_type = NUC_HWTYPE
@@ -107,6 +109,10 @@ enb1.startVNC()
 rflink1 = request.RFLink("rflink1")
 rflink1.addInterface(enb1_ue_rf)
 rflink1.addInterface(ue_enb1_rf)
+cn_link = request.Link("cn-link")
+cn_link.setNoBandwidthShaping()
+cn_link.addInterface(core_node_gnb_intf)
+cn_link.addInterface(enb1_core_node_intf)
 # rflink2 = request.RFLink("rflink2")
 # rflink2.addInterface(interferer_ue_rf)
 # rflink2.addInterface(ue_interferer_rf)
