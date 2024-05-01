@@ -149,10 +149,10 @@ function configure_nodeb {
     cp -r $ETCDIR/oai/* $SRCDIR/etc/oai/
     LANIF=`ip r | awk '/192\.168\.1\.0/{print $3}'`
     if [ ! -z $LANIF ]; then
-      LANIP=`ip r | awk '/192\.168\.1\.0/{print $NF}'`
-      echo LAN IFACE is $LANIF IP is $LANIP.. updating nodeb config
+    #   LANIP=`ip r | awk '/192\.168\.1\.0/{print $NF}'`
+      echo LAN IFACE is $LANIF.. updating nodeb config
       find $SRCDIR/etc/oai/ -type f -exec sed -i "s/LANIF/$LANIF/" {} \;
-      find $SRCDIR/etc/oai/ -type f -exec sed -i "s/LANIP/$LANIP/" {} \;
+    #   find $SRCDIR/etc/oai/ -type f -exec sed -i "s/LANIP/$LANIP/" {} \;
       IPLAST=`echo $LANIP | awk -F. '{print $NF}'`
       find $SRCDIR/etc/oai/ -type f -exec sed -i "s/GNBID/$IPLAST/" {} \;
     else
@@ -173,7 +173,7 @@ if [ $NODE_ROLE == "cn" ]; then
 elif [ $NODE_ROLE == "nodeb" ]; then
     BUILD_ARGS="--gNB"
     setup_ran_node
-    #configure_nodeb
+    configure_nodeb
 elif [ $NODE_ROLE == "ue" ]; then
     BUILD_ARGS="--nrUE"
     setup_ran_node
