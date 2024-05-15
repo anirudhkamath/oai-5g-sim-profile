@@ -16,7 +16,7 @@ if [ -f $SRCDIR/oai-setup-complete ]; then
         if [ ! -z $LANIF ]; then
           echo LAN IFACE is $LANIF...
           echo adding route to CN
-          sudo ip route add 192.168.70.128/26 via 192.168.1.1 dev $LANIF
+          sudo ip route add 192.168.70.128/26 via 192.168.1.10 dev $LANIF
         fi
     fi
     exit 0
@@ -106,7 +106,7 @@ function setup_cn_node {
     echo cloning and syncing oai-cn5g-fed... done.
     echo replacing a couple of configuration files
     cp /local/repository/etc/oai/docker-compose-basic-nrf.yaml /var/tmp/oai-cn5g-fed/docker-compose/docker-compose-basic-nrf.yaml
-    cp /local/repository/etc/oai/oai_db2.sql /var/tmp/oai-cn5g-fed/docker-compose/database/oai_db2.sql
+    cp /local/repository/etc/oai/oai_db_cots_ue.sql /var/tmp/oai-cn5g-fed/docker-compose/database/oai_db.sql
     echo setting up cn node... done.
 
 }
