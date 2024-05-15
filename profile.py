@@ -73,7 +73,7 @@ gnb1.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD
 gnb1_core_node_intf = gnb1.addInterface("gnb1_to_core_interface")
 gnb1_core_node_intf.addAddress(rspec.IPv4Address("192.168.1.20", "255.255.255.0"))  # gNB endpoint for core link.
 gnb1_sdr_intf = gnb1.addInterface("gnb1_compute_to_sdr_interface")
-gnb1_sdr_intf.addAddress(rspec.IPv4Address("192.168.2.10", "255.255.255.0"))  # gNB endpoint for SDR link.
+gnb1_sdr_intf.addAddress(rspec.IPv4Address("192.168.40.1", "255.255.255.0"))  # gNB endpoint for SDR link.
 gnb1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/deploy-oai.sh develop nodeb"))
 gnb1.startVNC()
 
