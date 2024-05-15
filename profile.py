@@ -44,13 +44,13 @@ nuc_to_hw_type = {
     "nuc2": "nuc5300"
 }
 
-pc.defineParameter(
-    "gnb1_node",
-    "Node for gnb",
-    portal.ParameterType.STRING,
-    NUC_HARDWARES[0],
-    NUC_HARDWARES
-)
+# pc.defineParameter(
+#     "gnb1_node",
+#     "Node for gnb",
+#     portal.ParameterType.STRING,
+#     NUC_HARDWARES[0],
+#     NUC_HARDWARES
+# )
 
 
 params = pc.bindParameters()
