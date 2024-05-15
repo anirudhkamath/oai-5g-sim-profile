@@ -53,7 +53,7 @@ nuc_to_hw_type = {
 # )
 
 
-params = pc.bindParameters()
+# params = pc.bindParameters()
 pc.verifyParameters()
 request = pc.makeRequestRSpec()
 
