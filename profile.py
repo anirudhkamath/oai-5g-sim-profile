@@ -58,6 +58,7 @@ pc.verifyParameters()
 request = pc.makeRequestRSpec()
 
 ue = request.RawPC("ue")
+ue.disk_image = "urn:publicid:IDN+emulab.net+image+PowderTeam:cots-jammy-image"
 ue.component_id = "nuc27"  # COTS UE on nuc27.
 ue.hardware_type = "nuc8259"
 ue.Desire("rf-controlled", 1)
