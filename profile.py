@@ -1,13 +1,13 @@
 #!/usr/bin/python
 
 tourDescription = """
-### Running TCP experiments over 5G OpenAirInterface5G controlled RF experiments on POWDER
+### Running TCP experiments over 5G srsRAN controlled RF experiments on POWDER
 
-This profile is derived from a tutorial session created by Dustin Maas for MERIF 2023.
-It deploys one gNB, one interference, and one UE compute nodes with an image that includes docker,
-docker-compose, tshark, oai-cn5g-fed v1.4.0, and docker images for all of the
+This profile was derived from a tutorial session created by Dustin Maas for MERIF 2023.
+It deploys one gNB, and one UE compute nodes with an image that includes docker,
+docker-compose, tshark, open5gs, oai-cn5g-fed v1.4.0, and docker images for all of the
 OAI 5G core network functions. It also includes source code and a prebuilt
-version of the OAI RAN stack (gNB, nrUE, RF simulator).
+version of the srsRAN software stack along with Open5GS core.
 
 The description and instructions for the original MERIF session can be found
 [here](https://gitlab.flux.utah.edu/powderrenewpublic/merif2023/-/blob/main/content/teaching-5g-oai.md).
