@@ -75,7 +75,7 @@ gnb1_core_node_intf = gnb1.addInterface("gnb1_to_core_interface")
 gnb1_core_node_intf.addAddress(rspec.IPv4Address("192.168.1.20", "255.255.255.0"))  # gNB endpoint for core link.
 gnb1_sdr_intf = gnb1.addInterface("gnb1_compute_to_sdr_interface")
 gnb1_sdr_intf.addAddress(rspec.IPv4Address("192.168.30.1", "255.255.255.0"))  # gNB endpoint for SDR link.
-gnb1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/deploy-oai.sh develop nodeb"))
+gnb1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/deploy-srs.sh release_23_5 srsRAN_Project"))
 gnb1.startVNC()
 
 # gNB SDR
@@ -91,7 +91,7 @@ core_node.hardware_type = "d430"
 core_node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
 core_node_gnb_intf = core_node.addInterface("core_gnb1_interface")
 core_node_gnb_intf.addAddress(rspec.IPv4Address("192.168.1.10", "255.255.255.0"))  # NGAP (AMF, UP)
-core_node.addService(rspec.Execute(shell="bash", command="/local/repository/bin/deploy-oai.sh develop cn"))
+core_node.addService(rspec.Execute(shell="bash", command="/local/repository/bin/deploy-open5gs"))
 core_node.startVNC()
 
 # interferer = request.RawPC("interferer")
