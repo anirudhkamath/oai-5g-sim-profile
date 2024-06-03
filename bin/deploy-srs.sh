@@ -24,7 +24,9 @@ install_srsran_common () {
         libfftw3-dev \
         libmbedtls-dev \
         libsctp-dev \
-        libzmq3-dev
+        libzmq3-dev \
+        libuhd-dev \
+        uhd-host
 }
 
 clone_build_install () {
