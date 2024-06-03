@@ -8,9 +8,9 @@ global:
 scp:
   sbi:
     server:
-      - address: 127.0.0.200
+      - address: 192.168.70.200
         port: 7777
     client:
       nrf:
-        - uri: http://127.0.0.10:7777
+        - uri: http://192.168.70.10:7777
 

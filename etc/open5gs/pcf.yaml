@@ -9,13 +9,13 @@ global:
 pcf:
   sbi:
     server:
-      - address: 127.0.0.13
+      - address: 192.168.70.13
         port: 7777
     client:
       scp:
-        - uri: http://127.0.0.200:7777
+        - uri: http://192.168.70.200:7777
   metrics:
     server:
-      - address: 127.0.0.13
+      - address: 192.168.70.13
         port: 9090
 

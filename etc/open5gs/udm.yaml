@@ -27,9 +27,9 @@ udm:
       key: /etc/open5gs/hnet/secp256r1-6.key
   sbi:
     server:
-      - address: 127.0.0.12
+      - address: 192.168.70.12
         port: 7777
     client:
       scp:
-        - uri: http://127.0.0.200:7777
+        - uri: http://192.168.70.200:7777
 

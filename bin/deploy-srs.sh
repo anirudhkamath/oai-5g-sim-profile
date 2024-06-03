@@ -8,6 +8,12 @@ SRS_REPO=https://github.com/srsRAN/$SRS_TYPE
 
 if [ -f $SRCDIR/$SRS_TYPE-setup-complete ]; then
     echo "setup already ran; not running again"
+    LANIF=`ip r | awk '/192\.168\.1\.2/{print $3}'`
+    if [ ! -z $LANIF ]; then
+        echo LAN IFACE is $LANIF...
+        echo adding route to CN
+        sudo ip route add 192.168.70.0/24 via 192.168.1.10 dev $LANIF
+    fi
     exit 0
 fi
 
