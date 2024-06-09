@@ -64,6 +64,8 @@ ue.hardware_type = "nuc8259"
 ue.Desire("rf-controlled", 1)
 ue_gnb1_rf = ue.addInterface("ue_to_gnb1_rf_interface")
 # ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/deploy-oai.sh develop ue")) --> COTS UE so no OAI.
+ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/module-off.sh"))
+ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/update-udhcpc-script.sh"))
 ue.startVNC()
 # ue.addService(rspec.Execute(shell="bash"))
 
@@ -75,7 +77,9 @@ gnb1_core_node_intf = gnb1.addInterface("gnb1_to_core_interface")
 gnb1_core_node_intf.addAddress(rspec.IPv4Address("192.168.1.20", "255.255.255.0"))  # gNB endpoint for core link.
 gnb1_sdr_intf = gnb1.addInterface("gnb1_compute_to_sdr_interface")
 gnb1_sdr_intf.addAddress(rspec.IPv4Address("192.168.30.1", "255.255.255.0"))  # gNB endpoint for SDR link.
-gnb1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/deploy-srs.sh release_23_5 srsRAN_Project"))
+gnb1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/deploy-srs.sh release_24_04 srsRAN_Project"))
+gnb1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-sdr-iface.sh"))
+gnb1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-cpu.sh"))
 gnb1.startVNC()
 
 # gNB SDR
