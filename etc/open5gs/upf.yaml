@@ -8,16 +8,15 @@ global:
 upf:
   pfcp:
     server:
-      - address: 192.168.70.7
+      - address: 127.0.0.7
     client:
   gtpu:
     server:
-      - address: 192.168.70.2
+      - address: 192.168.1.10
   session:
     - subnet: 10.45.0.1/16
     - subnet: 2001:db8:cafe::1/48
   metrics:
     server:
-      - address: 192.168.70.7
+      - address: 127.0.0.7
         port: 9090
-

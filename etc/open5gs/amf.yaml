@@ -1,6 +1,5 @@
 logger:
-  file:
-    path: /var/log/open5gs/amf.log
+  file: /var/log/open5gs/amf.log
 
 global:
   max:
@@ -9,17 +8,17 @@ global:
 amf:
   sbi:
     server:
-      - address: 192.168.70.5
+      - address: 127.0.0.5
         port: 7777
     client:
       scp:
-        - uri: http://192.168.70.200:7777
+        - uri: http://127.0.0.200:7777
   ngap:
     server:
-      - address: 192.168.70.2
+      - address: 192.168.1.10
   metrics:
     server:
-      - address: 192.168.70.5
+      - address: 127.0.0.5
         port: 9090
   guami:
     - plmn_id:

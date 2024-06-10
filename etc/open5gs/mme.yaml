@@ -11,18 +11,18 @@ mme:
   freeDiameter: /etc/freeDiameter/mme.conf
   s1ap:
     server:
-      - address: 192.168.70.2
+      - address: 127.0.0.2
   gtpc:
     server:
-      - address: 192.168.70.2
+      - address: 127.0.0.2
     client:
       sgwc:
-        - address: 192.168.70.3
+        - address: 127.0.0.3
       smf:
-        - address: 192.168.70.4
+        - address: 127.0.0.4
   metrics:
     server:
-      - address: 192.168.70.2
+      - address: 127.0.0.2
         port: 9090
   gummei:
     - plmn_id:
@@ -64,7 +64,7 @@ mme:
 #  o Listen on IPv4 and IPv6
 #  gtpc:
 #    server:
-#      - address: 192.168.70.2
+#      - address: 127.0.0.2
 #      - address: ::1
 #
 ################################################################################
@@ -75,7 +75,7 @@ mme:
 #  gtpc:
 #    client:
 #      sgwc:
-#        - address: 192.168.70.3
+#        - address: 127.0.0.3
 #          tac: 26000
 #        - address: 127.0.2.2
 #          tac: [25000, 27000, 28000]
@@ -85,7 +85,7 @@ mme:
 #  gtpc:
 #    client:
 #      sgwc:
-#        - address: 192.168.70.3
+#        - address: 127.0.0.3
 #          e_cell_id: abcde01
 #        - address: 127.0.2.2
 #          e_cell_id: [12345, a9413, 98765]
@@ -94,9 +94,9 @@ mme:
 #  gtpc:
 #    client:
 #      smf:
-#        - address: 192.168.70.4
+#        - address: 127.0.0.4
 #          apn: internet
-#        - address: 192.168.70.5
+#        - address: 127.0.0.5
 #          apn: volte
 #
 #  o SMF selection by eNodeB TAC
@@ -104,7 +104,7 @@ mme:
 #  gtpc:
 #    client:
 #      smf:
-#        - address: 192.168.70.4
+#        - address: 127.0.0.4
 #          tac: 26000
 #        - address: 127.0.2.4
 #          tac: [25000, 27000, 28000]
@@ -114,7 +114,7 @@ mme:
 #  gtpc:
 #    client:
 #      smf:
-#        - address: 192.168.70.4
+#        - address: 127.0.0.4
 #          e_cell_id: abcde01
 #        - address: 127.0.2.4
 #          e_cell_id: [12345, a9413, 98765]
@@ -125,7 +125,7 @@ mme:
 #    client:
 #      sgsn:
 #        - address:
-#          - 192.168.70.3
+#          - 127.0.0.3
 #          - fd69:f21d:873c:fa::2
 #          routes:
 #          - rai:
@@ -144,7 +144,7 @@ mme:
 #    client:
 #      sgsn:
 #        - address:
-#          - 192.168.70.3
+#          - 127.0.0.3
 #          - fd69:f21d:873c:fa::2
 #          routes:
 #          - rai:
@@ -164,7 +164,7 @@ mme:
 #  o MSC/VLR
 #  sgsap:
 #    server:
-#      - address: 192.168.70.2
+#      - address: 127.0.0.2
 #        map:
 #          tai:
 #            plmn_id:

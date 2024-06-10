@@ -12,6 +12,6 @@ nrf:
         mnc: 99
   sbi:
     server:
-      - address: 192.168.70.10
+      - address: 127.0.0.10
         port: 7777
 
